@@ -1,0 +1,6 @@
+escape ^Tt
+
+terminfo xterm*
+defscrollback 10000
+
+shell zsh

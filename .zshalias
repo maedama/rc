@@ -1,0 +1,1 @@
+alias yumdena="sudo yum -y --disablerepo=* --enablerepo=dena"

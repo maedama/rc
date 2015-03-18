@@ -1,0 +1,7 @@
+[user]
+	name = maeda-shuntaro
+	email = maeda.shuntaro@dena.jp
+[alias]
+    clean-branch      = !echo '[Dry-run]' && git branch --merged | grep -Pv '^\\*|^\\s*master'
+    clean-branch-exec = !                    git branch --merged | grep -Pv '^\\*|^\\s*master' | xargs git branch -d
+    pc = !git push origin `git rev-parse --abbrev-ref HEAD`
