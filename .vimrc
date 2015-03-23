@@ -29,11 +29,17 @@ exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 set completeopt=menu,preview
 
 
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+if has('vim_starting')
+    set nocompatible               " be iMproved
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+endi
+
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundleFetch 'fatih/vim-go'
-NeoBundleFetch 'vim-jp/vim-go-extra'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'vim-ruby/vim-ruby'
 call neobundle#end()
 
 filetype plugin indent on
