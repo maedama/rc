@@ -34,6 +34,11 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endi
 
+ let g:syntastic_mode_map = {
+         \ "mode": "active",
+         \ "active_filetypes": ["ruby", "yaml"],
+        \ "passive_filetypes": [] }
+
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'fatih/vim-go'
