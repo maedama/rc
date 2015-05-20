@@ -40,6 +40,8 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'stephpy/vim-yaml'
+NeoBundle 'scrooloose/syntastic.git'
 call neobundle#end()
 
 filetype plugin indent on
