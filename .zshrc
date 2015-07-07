@@ -10,5 +10,9 @@ eval "$(plenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
+gcd() {
+    cd `ghq list | grep $1 | head -n 1 | xargs -IREPO echo ~/.ghq/REPO`
+}
+
 
 eval "$(pyenv init -)"
