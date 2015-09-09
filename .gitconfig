@@ -5,6 +5,7 @@
     clean-branch      = !echo '[Dry-run]' && git branch --merged | grep -Pv '^\\*|^\\s*master'
     clean-branch-exec = !                    git branch --merged | grep -Pv '^\\*|^\\s*master' | xargs git branch -d
     pc = !git push origin `git rev-parse --abbrev-ref HEAD`
+    ci = !git commit --allow-empty -m "run ci" && git pc
     ignore = !"f() { local s=$1; shift; \
           while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
           curl \"https://www.gitignore.io/api/$s\"; }; f"
