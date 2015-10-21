@@ -8,11 +8,13 @@ au BufNewFile,BufRead *.pm set filetype=perl
 au BufNewFile,BufRead *.psgi set filetype=perl
 au BufNewFile,BufRead *.rb set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Routefile set filetype=ruby
 au BufNewFile,BufRead *.js set filetype=javascript
 au BufNewFile,BufRead *.coffee set filetype=javascript
 au BufNewFile,BufRead *.html set filetype=html
 au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufRead *.go set filetype=go
+au BufNewFile,BufRead *.yml set filetype=yaml
 
 "au FileType go nmap <Leader>i <Plug>(go-info)
 "au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -35,8 +37,8 @@ if has('vim_starting')
 endi
 
  let g:syntastic_mode_map = {
-         \ "mode": "active",
-         \ "active_filetypes": ["ruby", "yaml"],
+         \ "mode": "passive",
+         \ "active_filetypes": [""],
         \ "passive_filetypes": [] }
 
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -44,9 +46,10 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'sukima/xmledit'
+NeoBundle 'vim-ruby/vim-ruby'
 call neobundle#end()
 
 filetype plugin indent on
