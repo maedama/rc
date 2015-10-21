@@ -6,7 +6,7 @@
     clean-branch-exec = !                    git branch --merged | grep -v 'master' | xargs git branch -d
     pc = !git push origin `git rev-parse --abbrev-ref HEAD`
     ci = !git commit --allow-empty -m "run ci" && git pc
-    cs = git commit -m "[ci skip]"
+    cs = !git commit -m '[ci skip]'
     ignore = !"f() { local s=$1; shift; \
           while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
           curl \"https://www.gitignore.io/api/$s\"; }; f"
