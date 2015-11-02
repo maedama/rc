@@ -18,6 +18,11 @@ ghq-peco() {
     pwd | xargs -IDIR echo 'cd to DIR';
 }
 
+docker-peco() {
+    docker ps | peco | cut -f 1 -d " " | xargs -IREPO docker exec -it REPO /bin/bash;
+}
+
+
 vi-peco() {
     vi  `peco | xargs -IFILE echo FILE`;
 }
@@ -42,6 +47,8 @@ case $HIST_STAMPS in
   "yyyy-mm-dd") alias history='fc -il 1' ;;
   *) alias history='fc -l 1' ;;
 esac
+eval "$(docker-machine env dev)"
+
 
 setopt append_history
 setopt extended_history
