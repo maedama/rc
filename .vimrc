@@ -50,6 +50,8 @@ NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'sukima/xmledit'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'ekalinin/Dockerfile.vim'
+
 call neobundle#end()
 
 filetype plugin indent on

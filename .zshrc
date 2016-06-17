@@ -1,4 +1,6 @@
 alias vi='vim'
+alias ecr-login='$(aws --region us-east-1 ecr get-login)'
+alias docker-rm-notag='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH="$HOME/.go"
@@ -12,6 +14,12 @@ export PATH="$HOME/.plenv/bin:$PATH"
 eval "$(plenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export AWS_REGION="ap-northeast-1"
+
+ec2-login() {
+    SERVER=`AWS_PROFILE=ml aws ec2 describe-instances | jq --raw-output '.Reservations[].Instances[] | select(.State.Name == "running").PublicDnsName'`
+    ssh -i ~/.ssh/maedama.pem ubuntu@ec2-52-197-60-240.ap-northeast-1.compute.amazonaws.com
+}
 
 ghq-peco() {
     cd `ghq list | peco | xargs -IREPO echo ~/.ghq/REPO`;
@@ -19,7 +27,8 @@ ghq-peco() {
 }
 
 docker-peco() {
-    docker ps | peco | cut -f 1 -d " " | xargs -IREPO docker exec -it REPO /bin/bash;
+    ID=`docker ps | peco | cut -f 1 -d " "`
+    docker exec -it $ID /bin/bash;
 }
 
 
@@ -47,7 +56,7 @@ case $HIST_STAMPS in
   "yyyy-mm-dd") alias history='fc -il 1' ;;
   *) alias history='fc -l 1' ;;
 esac
-eval "$(docker-machine env dev)"
+eval "$(docker-machine env default)"
 
 
 setopt append_history
