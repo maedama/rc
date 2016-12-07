@@ -3,8 +3,10 @@ alias ecr-login='$(aws --region us-east-1 ecr get-login)'
 alias docker-rm-notag='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/Library/Android/sdk/platform-tools
 export GOPATH="$HOME/.go"
 export GHQPATH="$HOME/.ghq"
+export PATH=$PATH:/Users/shuntaro_maeda/.ghq/github.com/dilshod/xlsx2csv
 export GOROOT=`go env GOROOT`
 export PATH=$GOPATH/bin:$PATH
 
@@ -18,8 +20,11 @@ export AWS_REGION="ap-northeast-1"
 
 ec2-login() {
     SERVER=`AWS_PROFILE=ml aws ec2 describe-instances | jq --raw-output '.Reservations[].Instances[] | select(.State.Name == "running").PublicDnsName'`
-    ssh -i ~/.ssh/maedama.pem ubuntu@ec2-52-197-60-240.ap-northeast-1.compute.amazonaws.com
+    ssh -A -i ~/.ssh/maedama.pem ubuntu@$SERVER
 }
+
+alias stop-ml-ec2="AWS_PROFILE=ml aws ec2 stop-instances  --instance-ids i-239b0bac"
+alias start-ml-ec2="AWS_PROFILE=ml aws ec2 start-instances  --instance-ids i-239b0bac"
 
 ghq-peco() {
     cd `ghq list | peco | xargs -IREPO echo ~/.ghq/REPO`;
@@ -67,3 +72,6 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
+
+# added by travis gem
+[ -f /Users/shuntaro_maeda/.travis/travis.sh ] && source /Users/shuntaro_maeda/.travis/travis.sh
