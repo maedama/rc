@@ -19,7 +19,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export AWS_REGION="ap-northeast-1"
 
 ec2-login() {
-    SERVER=`AWS_PROFILE=ml aws ec2 describe-instances | jq --raw-output '.Reservations[].Instances[] | select(.State.Name == "running").PublicDnsName'`
+    SERVER=`AWS_DEFAULT_PROFILE=ml aws ec2 describe-instances | jq --raw-output '.Reservations[].Instances[] | select(.State.Name == "running").PublicDnsName'`
     ssh -A -i ~/.ssh/maedama.pem ubuntu@$SERVER
 }
 
