@@ -75,3 +75,5 @@ setopt share_history # share command history data
 
 # added by travis gem
 [ -f /Users/shuntaro_maeda/.travis/travis.sh ] && source /Users/shuntaro_maeda/.travis/travis.sh
+. /Users/shuntaro.maeda/.pyenv/versions/anaconda3-5.0.1/etc/profile.d/conda.sh
+
