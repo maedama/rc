@@ -3,6 +3,7 @@ autocmd BufNewFile *.t -r $HOME/.vim/template/t.template
 set expandtab ts=4 sw=4 ai
 set tabstop=4 shiftwidth=4 softtabstop=4
 set backspace=2
+au BufNewFile,BufRead *.hql set filetype=sql
 au BufNewFile,BufRead *.t set filetype=perl
 au BufNewFile,BufRead *.pm set filetype=perl
 au BufNewFile,BufRead *.psgi set filetype=perl
@@ -51,6 +52,7 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'sukima/xmledit'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'mattn/vim-sqlfmt'
 
 call neobundle#end()
 
