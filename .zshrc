@@ -1,6 +1,6 @@
 alias vi='vim'
 alias ecr-login='$(aws --region us-east-1 ecr get-login)'
-alias docker-rm-notag='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+#alias docker-rm-notag='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/Library/Android/sdk/platform-tools
@@ -77,3 +77,10 @@ setopt share_history # share command history data
 [ -f /Users/shuntaro_maeda/.travis/travis.sh ] && source /Users/shuntaro_maeda/.travis/travis.sh
 . /Users/shuntaro.maeda/.pyenv/versions/anaconda3-5.0.1/etc/profile.d/conda.sh
 
+
+JOBMANAGER_CONTAINER=$(docker ps --filter name=jobmanager --format={{.ID}})
+TASKMANAGER_CONTAINER=$(docker ps --filter name=taskmanager --format={{.ID}})
+
+source ~/opt/anaconda3/etc/profile.d/conda.sh
+conda activate default
+source ~/.zsh_secret

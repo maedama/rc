@@ -1,7 +1,7 @@
 autocmd BufNewFile *.pm -r $HOME/.vim/template/pm.template
 autocmd BufNewFile *.t -r $HOME/.vim/template/t.template
-set expandtab ts=4 sw=4 ai
-set tabstop=4 shiftwidth=4 softtabstop=4
+set expandtab ts=2 sw=2 ai
+set tabstop=2 shiftwidth=2 softtabstop=2
 set backspace=2
 au BufNewFile,BufRead *.hql set filetype=sql
 au BufNewFile,BufRead *.t set filetype=perl
